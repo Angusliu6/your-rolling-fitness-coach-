@@ -5,7 +5,28 @@
 > **Train when you can. Log what you actually did. Let the plan adapt.**  
 > 不需要固定每周二或周五健身。你有时间就来，记录实际完成的训练与饮食，下一次计划随之更新。
 
-[中文说明](#中文--为什么需要它) · [English guide](README_EN.md) · [Installation & mobile](docs/INSTALL.md) · [Skill source](SKILL.md) · [Evaluation scenarios](evals/evals.json)
+[🚀 立即体验](#-立即体验无需安装不用懂-skill) · [English](README_EN.md) · [安装与手机使用](docs/INSTALL.md) · [Skill 源码](SKILL.md) · [Evaluation scenarios](evals/evals.json)
+
+## 🚀 立即体验（无需安装、不用懂 Skill）
+
+### **[▶ 点击这里，在 ChatGPT 开始私人健身教练对话](https://chatgpt.com/?q=%E8%AF%B7%E4%BD%9C%E4%B8%BA%20Rolling%20Fitness%20Coach%20%E5%8A%A8%E6%80%81%E7%A7%81%E4%BA%BA%E5%81%A5%E8%BA%AB%E4%B8%8E%E8%90%A5%E5%85%BB%E6%95%99%E7%BB%83%E3%80%82%E5%85%88%E8%AF%BB%E5%8F%96%E5%85%AC%E5%BC%80%20Skill%20%E6%8C%87%E4%BB%A4%EF%BC%9Ahttps%3A%2F%2Fraw.githubusercontent.com%2FAngusliu6%2Fyour-rolling-fitness-coach-%2Fmain%2FSKILL.md%20%EF%BC%8C%E5%B9%B6%E5%9C%A8%E9%9C%80%E8%A6%81%E6%97%B6%E5%8F%82%E7%85%A7%E8%AF%A5%E4%BB%93%E5%BA%93%20references%2F%20%E4%B8%8B%E7%9A%84%E7%9B%B8%E5%BA%94%E8%AF%B4%E6%98%8E%E3%80%82%E7%94%A8%E4%B8%AD%E6%96%87%E5%B8%AE%E5%8A%A9%E6%88%91%E6%A0%B9%E6%8D%AE%E4%BB%8A%E5%A4%A9%E7%9A%84%E6%97%B6%E9%97%B4%E3%80%81%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E3%80%81%E6%81%A2%E5%A4%8D%E3%80%81%E5%99%A8%E6%9D%90%E5%92%8C%E9%A5%AE%E9%A3%9F%E6%BB%9A%E5%8A%A8%E5%88%B6%E5%AE%9A%E8%AE%A1%E5%88%92%EF%BC%9B%E4%B8%8D%E8%A6%81%E6%8A%8A%E6%9C%AA%E5%AE%8C%E6%88%90%E8%AE%AD%E7%BB%83%E7%AE%97%E4%BD%9C%E5%B7%B2%E5%AE%8C%E6%88%90%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%A3%B0%E7%A7%B0%E5%B7%B2%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E6%88%96%E6%B0%B8%E4%B9%85%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E3%80%82%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96%20GitHub%20%E6%96%87%E4%BB%B6%EF%BC%8C%E8%AF%B7%E5%91%8A%E8%AF%89%E6%88%91%E5%B9%B6%E8%AF%B7%E6%88%91%E7%B2%98%E8%B4%B4%20SKILL.md%20%E5%86%85%E5%AE%B9%E3%80%82%E7%8E%B0%E5%9C%A8%E5%85%88%E9%97%AE%E6%88%91%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%9A%E6%88%91%E4%BB%8A%E5%A4%A9%E8%A6%81%E8%AE%AD%E7%BB%83%E3%80%81%E6%B1%87%E6%8A%A5%E9%A5%AE%E9%A3%9F%EF%BC%8C%E8%BF%98%E6%98%AF%E5%BB%BA%E7%AB%8B%E6%A1%A3%E6%A1%88%EF%BC%9F)**
+
+**最简单的用法：** 点击链接 → 如果 ChatGPT 输入框出现预填消息，按「发送」→ 直接告诉教练「今天有40分钟，想练肩」或者「午餐吃了米饭和鸡肉」。你可以上传照片，也可以训练中随时汇报。无需命令行、下载或注册新的服务。
+
+> **体验 ≠ 安装。** 此按钮尝试利用 ChatGPT 的 *非正式预填消息链接* 打开对话；不同浏览器或手机端可能不显示预填文字，也可能要求登录。它不会自动发送、安装 Skill 或跨对话保存训练记录；AI 需要能够读取此仓库中的公开指令文件。如果打不开或没出现文字，请复制下面的启动语，在 ChatGPT 新对话中粘贴并发送。
+
+<details>
+<summary>📋 点击展开备用启动语（复制后贴到 ChatGPT）</summary>
+
+```text
+请作为 Rolling Fitness Coach 动态私人健身与营养教练。先读取公开 Skill 指令：https://raw.githubusercontent.com/Angusliu6/your-rolling-fitness-coach-/main/SKILL.md ，并在需要时参照该仓库 references/ 下的相应说明。用中文帮助我根据今天的时间、训练记录、恢复、器材和饮食滚动制定计划；不要把未完成训练算作已完成，也不要声称已自动安装或永久保存数据。如果你无法读取 GitHub 文件，请告诉我并请我粘贴 SKILL.md 内容。现在先问我一个问题：我今天要训练、汇报饮食，还是建立档案？
+```
+
+</details>
+
+✅ **想正式安装或在手机上长期使用？** 请看 [两分钟安装说明与常见问题](docs/INSTALL.md)。有权限的 ChatGPT 工作空间可安装 Skill；[官方说明](https://help.openai.com/en/articles/20001066-skills-in-chatgpt)。
+
+⚠️ **目前作者账户中的私人 Plugin 不向所有 GitHub 访客公开。** 不要把私人插件地址误当作公共一键安装按钮；符合条件的工作空间可按文档上传或共享。详见 [ChatGPT 插件分享规则](https://help.openai.com/en/articles/20001256-plugins-in-chatgpt)。
 
 ## 中文 · 为什么需要它？
 
@@ -58,16 +79,14 @@ flowchart TD
 
 它会依据**已确认的实际信息**继续工作；不知道的数据保持未知，不把训练计划当训练记录，也不把没汇报的餐食当作零摄入。
 
-### 🚀 安装（特别注意 ChatGPT 手机端）
+### 📱 想把教练真正安装到 ChatGPT？
 
-此仓库包含 **Agent Skill 源代码**，GitHub 下载、克隆或拥有 `.skill` 文件**并不会自动在 ChatGPT 插件列表中安装**。
+- **只想先试试：** 返回顶部点击 [▶ 在 ChatGPT 开始对话](https://chatgpt.com/?q=%E8%AF%B7%E4%BD%9C%E4%B8%BA%20Rolling%20Fitness%20Coach%20%E5%8A%A8%E6%80%81%E7%A7%81%E4%BA%BA%E5%81%A5%E8%BA%AB%E4%B8%8E%E8%90%A5%E5%85%BB%E6%95%99%E7%BB%83%E3%80%82%E5%85%88%E8%AF%BB%E5%8F%96%E5%85%AC%E5%BC%80%20Skill%20%E6%8C%87%E4%BB%A4%EF%BC%9Ahttps%3A%2F%2Fraw.githubusercontent.com%2FAngusliu6%2Fyour-rolling-fitness-coach-%2Fmain%2FSKILL.md%20%EF%BC%8C%E5%B9%B6%E5%9C%A8%E9%9C%80%E8%A6%81%E6%97%B6%E5%8F%82%E7%85%A7%E8%AF%A5%E4%BB%93%E5%BA%93%20references%2F%20%E4%B8%8B%E7%9A%84%E7%9B%B8%E5%BA%94%E8%AF%B4%E6%98%8E%E3%80%82%E7%94%A8%E4%B8%AD%E6%96%87%E5%B8%AE%E5%8A%A9%E6%88%91%E6%A0%B9%E6%8D%AE%E4%BB%8A%E5%A4%A9%E7%9A%84%E6%97%B6%E9%97%B4%E3%80%81%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E3%80%81%E6%81%A2%E5%A4%8D%E3%80%81%E5%99%A8%E6%9D%90%E5%92%8C%E9%A5%AE%E9%A3%9F%E6%BB%9A%E5%8A%A8%E5%88%B6%E5%AE%9A%E8%AE%A1%E5%88%92%EF%BC%9B%E4%B8%8D%E8%A6%81%E6%8A%8A%E6%9C%AA%E5%AE%8C%E6%88%90%E8%AE%AD%E7%BB%83%E7%AE%97%E4%BD%9C%E5%B7%B2%E5%AE%8C%E6%88%90%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%A3%B0%E7%A7%B0%E5%B7%B2%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E6%88%96%E6%B0%B8%E4%B9%85%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E3%80%82%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96%20GitHub%20%E6%96%87%E4%BB%B6%EF%BC%8C%E8%AF%B7%E5%91%8A%E8%AF%89%E6%88%91%E5%B9%B6%E8%AF%B7%E6%88%91%E7%B2%98%E8%B4%B4%20SKILL.md%20%E5%86%85%E5%AE%B9%E3%80%82%E7%8E%B0%E5%9C%A8%E5%85%88%E9%97%AE%E6%88%91%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%9A%E6%88%91%E4%BB%8A%E5%A4%A9%E8%A6%81%E8%AE%AD%E7%BB%83%E3%80%81%E6%B1%87%E6%8A%A5%E9%A5%AE%E9%A3%9F%EF%BC%8C%E8%BF%98%E6%98%AF%E5%BB%BA%E7%AB%8B%E6%A1%A3%E6%A1%88%EF%BC%9F)，**免安装试用**。链接会尝试预填指令，但不保证每个手机都支持；需要你按「发送」，而且这并不是永久安装。
+- **需要正式 Skill：** 如果你的 ChatGPT 账户 / 工作空间支持 Skills，可前往 **Plugins → Skills → Create → Upload from your computer**，按官方页面安装并确认扫描结果；功能受账户和工作空间限制。
+- **已有私人 Plugin：** 仅作者自己的私人插件链接不能供其他 GitHub 访客直接安装。工作空间共享或发布需额外授权，**不等于公开分发**。
+- **开发者：** 兼容 Agent Skills 的客户端可安装整个项目中的 `SKILL.md` 与 `references/`，详见下方安装指南。
 
-1. **支持 Skills 的 ChatGPT 账户 / 工作空间：** 在 ChatGPT `Plugins → Skills` 寻找 `Create`，按界面提供的方式上传包或通过编辑器创建。Skills 可用性由套餐、工作空间和客户端决定；请以 [官方帮助](https://help.openai.com/en/articles/20001066-skills-in-chatgpt) 为准。
-2. **ChatGPT 私人 Plugin：** 可以把本 Skill 封装为只含 Skill 的 Plugin。账户中的插件通常可在手机端的 `Plugins → Personal/Installed` 查找，具体能力及可见性因客户端、套餐而异。参见 [Plugins in ChatGPT](https://help.openai.com/en/articles/20001256-plugins-in-chatgpt)。
-3. **Codex / 兼容 Agent Skills 的工具：** 将整个 Skill 文件夹添加到宿主支持的 Skills 目录，并遵循对应宿主的安装说明。
-4. **仅聊天使用：** 可以直接将 `SKILL.md` 和 `references/` 提供给支持长上下文的助手，但不会自动获得持久储存或定时提醒。
-
-👉 详细步骤与常见疑问见 [docs/INSTALL.md](docs/INSTALL.md)。
+👉 [完整安装与手机故障排查](docs/INSTALL.md) · [ChatGPT 官方 Skills 文档](https://help.openai.com/en/articles/20001066-skills-in-chatgpt)
 
 ### 📁 项目结构
 
