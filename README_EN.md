@@ -6,6 +6,24 @@ A reusable [Agent Skill](https://agentskills.io/specification) for an AI coach t
 
 This is **not** a fitness tracking SaaS, automated body-composition measurement, or a medical device. It provides workflow instructions plus an optional offline JSON logging CLI. Persistent storage, image inspection, video search, reminders, and mobile availability require capabilities of the host product.
 
+## 🚀 Try it now — no installation required
+
+### **[▶ Open Rolling Fitness Coach in ChatGPT](https://chatgpt.com/?q=Act%20as%20my%20Rolling%20Fitness%20Coach%20for%20adaptive%20workouts%20and%20nutrition.%20Read%20https%3A%2F%2Fraw.githubusercontent.com%2FAngusliu6%2Fyour-rolling-fitness-coach-%2Fmain%2FSKILL.md%20and%20relevant%20references%2F%20files%20from%20that%20repo%20before%20coaching.%20Adapt%20to%20workouts%20actually%20completed%2C%20time%2C%20recovery%2C%20equipment%20and%20meals.%20Do%20not%20claim%20installation%20or%20persistent%20memory.%20If%20you%20cannot%20access%20GitHub%2C%20ask%20me%20to%20paste%20SKILL.md.%20First%20ask%20whether%20I'd%20like%20to%20plan%20a%20workout%2C%20log%20a%20meal%2C%20or%20set%20up%20a%20profile.)**
+
+Open the link, review the prefilled starter text (if your browser supports it), **press Send**, and tell the coach what you want to do. No CLI, GitHub account, or plugin knowledge needed for this trial.
+
+> **Important:** This is a best-effort, **undocumented** ChatGPT prefill URL, **not** an installation link. It may not prefill on some mobile clients, and it cannot automatically submit a message, install the Skill, or preserve logs across chats. The assistant must be able to read the public source on GitHub.
+
+<details><summary>Fallback: copy/paste this into a new ChatGPT chat</summary>
+
+```text
+Act as my Rolling Fitness Coach for adaptive workouts and nutrition. Read https://raw.githubusercontent.com/Angusliu6/your-rolling-fitness-coach-/main/SKILL.md and relevant references/ files from that repo before coaching. Adapt to workouts actually completed, time, recovery, equipment and meals. Do not claim installation or persistent memory. If you cannot access GitHub, ask me to paste SKILL.md. First ask whether I'd like to plan a workout, log a meal, or set up a profile.
+```
+
+</details>
+
+For a real installation on an eligible ChatGPT account or workspace, see [Mobile & installation](docs/INSTALL.md). The author's **private** Plugin link is not a public install link.
+
 ## What it solves
 
 - **Irregular training:** You might be free for 25, 45, or 60 minutes at unpredictable times. The coach plans from actual context instead of assuming fixed gym days.
@@ -27,7 +45,7 @@ You: Lunch was rice, chicken, and vegetables. I haven't had my ordered protein s
 Coach: Log the meal as an estimate, do not count the shake, and recommend a next meal.
 ```
 
-## Start
+## For developers and eligible Skills users
 
 1. Open [`SKILL.md`](SKILL.md). It explains when to read each topic file under [`references/`](references/).
 2. For supported ChatGPT accounts, see [installation and mobile instructions](docs/INSTALL.md).
