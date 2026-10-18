@@ -1,0 +1,11 @@
+{
+  "date": "2026-02-01",
+  "time": "09:30",
+  "name": "燕麦 + 香蕉 + 乳清蛋白",
+  "status": "consumed",
+  "quantity": "燕麦40g，香蕉1根，乳清1勺（假设产品标签蛋白24g）",
+  "estimated_protein_g": 30,
+  "estimated_kcal": 370,
+  "confidence": "low",
+  "notes": "数值纯示例；品牌/份量不同时应重新估算"
+}

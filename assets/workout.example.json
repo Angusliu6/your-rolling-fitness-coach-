@@ -1,0 +1,25 @@
+{
+  "date": "2026-02-01",
+  "duration_min": 42,
+  "session_label": "lower-and-back",
+  "exercises": [
+    {
+      "name": "腿举",
+      "muscles": ["quads", "glutes"],
+      "load_notes": "机器显示总配重；非自由重量",
+      "sets": [
+        {"type": "warmup", "kg": 20, "reps": 12, "rir": null},
+        {"type": "work", "kg": 50, "reps": 12, "rir": 2},
+        {"type": "work", "kg": 50, "reps": 11, "rir": 2}
+      ]
+    },
+    {
+      "name": "高位下拉",
+      "muscles": ["lats", "upper_back"],
+      "sets": [{"type": "work", "kg": 35, "reps": 10, "rir": 2}]
+    }
+  ],
+  "fatigue_0_10": 6,
+  "pain_notes": "无不适",
+  "notes": "纯虚构示例，非任何真实用户训练记录"
+}
