@@ -81,3 +81,10 @@ Training plans are hypotheses; completed sessions are evidence. Exercise volume 
 ## Contributing
 
 Suggestions and fixes are welcome. Please use anonymized, synthetic examples and review [CONTRIBUTING.md](CONTRIBUTING.md) before submitting. Licensed under [MIT](LICENSE).
+
+
+## 🏆 Per-set progression & Personal Records (v1.1)
+
+The coach can now propose a **load, target reps, RIR, rest and tempo for each working set**, using only comparable, clean history. Example: a prior 25 kg machine press with 12/11/9 reps might lead to a suggested 25 kg × 12/12/10 next time; only progress the smallest available load increment once all working sets meet the upper target with sound form and reps in reserve. 
+
+Optional **local SQLite** persistence stores actual sets separately from plans and supports comparable equipment-specific PRs; **installing the Skill does not automatically enable phone storage or cloud sync**. Never commit private workout databases to public GitHub. See [progression rules](references/progression-engine.md), [database guide](docs/DATA_STORAGE.md), and [CLI](scripts/progression_db.py).
