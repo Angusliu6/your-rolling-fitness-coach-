@@ -147,3 +147,15 @@ python -m unittest discover -s tests -v
 ## License
 
 [MIT](LICENSE). Educational and lifestyle coaching, not a substitute for medical care.
+
+
+## 🏆 逐组渐进超负荷与个人纪录（v1.1）
+
+除了根据今天的训练时间动态排动作，新版还可以根据**真实逐组训练历史**建议下一次每组的重量、次数、RIR（剩余余力）、休息时长和动作节奏。比如上次同一器械胸推 `25kg × 12/11/9`，下次可以先挑战 `25kg × 12/12/10`；全部规范组达到目标上限并仍有余力后，再建议增加器械最小可用负重档，而不是每次盲目加重。
+
+- **追踪：** 同器械 Load PR、同重量 Rep PR、条件满足时提供注明误差的估计 1RM。
+- **真实记录：** 区分热身组、实际工作组、计划组和漏记数据，拒绝编造每组次数。
+- **训练现场：** 如果某一组提前力竭、器械被占或疲劳过大，重算剩余组的目标负重和休息时间。
+- **存储边界：** 已新增**可选本地 SQLite** 记录器，但 ChatGPT 对话/私人 Plugin 并没有自动获得用户手机文件写入或云同步能力；要实现一键跨设备持久化，需要未来另接认证后端。真实个人 DB **绝不能上传到公开 GitHub**。
+
+[查看逐组渐进算法](references/progression-engine.md) · [SQLite 数据库安装/隐私说明](docs/DATA_STORAGE.md) · [源码](scripts/progression_db.py) · [15项新测试](tests/test_progression_db.py)
