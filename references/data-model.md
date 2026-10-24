@@ -25,3 +25,8 @@ python scripts/coach_log.py summary --file athlete.json --days 14
 ```
 
 输入 JSON 模板见 `assets/`。脚本仅把数据写入本地 JSON，具体训练建议需由教练模型解读。用户可直接删除该 JSON 文件清除本地存储。
+
+
+## v1.1 SQLite 结构化训练状态
+
+另提供可选 `scripts/progression_db.py` 与 SQLite 三表 `sessions`、`actual_sets`、`prescriptions`，分别保存训练会话、逐组真实记录、下一次训练建议。字段包括器械身份/负重口径/单位、每组重量、次数、RIR、技术质量、力竭标记、休息秒数和向心/离心动作节奏。建议不可算成真实完成，PR 只在动作及器械可比时计算。详见 `docs/DATA_STORAGE.md` 和 `references/progression-engine.md`。
