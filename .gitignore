@@ -12,3 +12,15 @@ personal-logs/
 private-data/
 .env
 .env.*
+
+
+# Never commit private athlete records or local databases
+private/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.sqlite-wal
+*.sqlite-shm
+athlete*.json
