@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-24",
+  "status": "completed",
+  "pain": false,
+  "fatigue": 6,
+  "exercises": [
+    {
+      "exercise": "example_machine_chest_press",
+      "equipment": "machine-A-model-example",
+      "load_basis": "machine_stack",
+      "unit": "kg",
+      "sets": [
+        {"load": 25, "reps": 12, "rir": 2, "form": "good", "rest_seconds": 120, "eccentric_seconds": 2, "concentric_seconds": 1},
+        {"load": 25, "reps": 11, "rir": 2, "form": "good", "rest_seconds": 120, "eccentric_seconds": 2, "concentric_seconds": 1},
+        {"load": 25, "reps": 9, "rir": 1, "form": "good", "rest_seconds": 120, "eccentric_seconds": 2, "concentric_seconds": 1}
+      ]
+    }
+  ]
+}
