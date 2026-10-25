@@ -7,17 +7,17 @@
 
 [🚀 立即体验](#-立即体验无需安装不用懂-skill) · [English](README_EN.md) · [安装与手机使用](docs/INSTALL.md) · [Skill 源码](SKILL.md) · [Evaluation scenarios](evals/evals.json)
 
-## 🆕 v1.2 · 手机逐组记录 UI（真实可运行的开源网页）
+## 🆕 v1.2.1 · ChatGPT 对话内 Intelligent UI
 
-**先填训练前体重，再练，再记每一组。** 新增 [独立训练记录器源码](docs/training-ui.html)（[JS](docs/training-ui.js) · [CSS](docs/training-ui.css)），不是只放一张演示截图：
+本次更新**只改进 ChatGPT 聊天中的原生交互形式**，不开发网站，也不需要部署：
 
-- **训练前**：用户自行填写当日体重、称重条件、训练时长与恢复情况，支持跳过体重，不把饭后测量误作晨重。
-- **训练中**：每一个正式组都有自己的「完成 ✅ / 重量 kg / 次数 / RIR」控件；支持每组不同重量、器械替换、加减组。
-- **腹部固定训练**：默认计划含反向卷腹 2 组，亦可添加腹部训练；正式排进 60 分钟预算，不再训练后临时无限加量。
-- **训练后**：复制结构化训练总结返回 AI 教练；可导出/导入浏览器 JSON 备份；另可导出仅包含已完成组的本地 CLI 兼容日志。
-- **不依赖后端**：网页只写当前浏览器的 localStorage，绝不上传训练数据到公共 GitHub；**没有自动连接 ChatGPT 或 SQLite 数据库**。
+- **训练开始前**：可选输入当天体重（kg/斤）、称重条件、可用训练分钟和恢复状态；用户消息中已经提供的无需重复填写。
+- **训练进行中**：直接在当前 ChatGPT 回复中逐组记录每组**实际重量、次数、RIR 和完成状态**，每组可以不同重量；可以替换被占用器械及增减组。
+- **完成后**：点击聊天中的提交按钮，将本次真实输入作为同一对话的新消息，教练按已完成组分析进步并调整剩余计划。
+- **腹肌固定覆盖**：在每次有限训练时间内合理安排约2–3组腹肌/核心训练。
+- **能力边界**：宿主不支持原生控件时回退为同一聊天的文本记录；没有自动云同步、自动永久记忆或 SQLite 后端。
 
-**运行方法**：`git clone https://github.com/Angusliu6/your-rolling-fitness-coach-.git`，在浏览器打开 `docs/training-ui.html`（保留同目录 JS/CSS）。这是一份可以打开的离线/静态网页，**不是** ChatGPT 原生 UI 的自动安装包，也不代表 GitHub Pages 已经部署；若未来开启 Pages 可以作为静态站点发布。完整说明：[训练前/UI 规范](references/interactive-ui.md) · [本地数据](docs/DATA_STORAGE.md)。
+**不需要打开 GitHub 网页记录训练、下载新 App、部署 HTML/CSS/JS 或设置服务器。** 详情：[聊天原生 UI 规范](references/interactive-ui.md) · [滚动训练引擎](references/training-engine.md)。
 
 ## 🚀 立即体验（无需安装、不用懂 Skill）
 

@@ -32,8 +32,10 @@ python scripts/coach_log.py summary --file athlete.json --days 14
 另提供可选 `scripts/progression_db.py` 与 SQLite 三表 `sessions`、`actual_sets`、`prescriptions`，分别保存训练会话、逐组真实记录、下一次训练建议。字段包括器械身份/负重口径/单位、每组重量、次数、RIR、技术质量、力竭标记、休息秒数和向心/离心动作节奏。建议不可算成真实完成，PR 只在动作及器械可比时计算。详见 `docs/DATA_STORAGE.md` 和 `references/progression-engine.md`。
 
 
-## v1.2 训练前 UI 及浏览器导出
+## v1.2.1 原生聊天训练 UI 数据边界
 
-网页版 `docs/training-ui.html` 记录 `bodyweight`（可空）、`weight_context`、日期、今日状态和逐组 `completed/load/reps/rir`。离线浏览器 `localStorage` 与可下载 JSON 备份均不是云端同步。点击「导出 CLI 兼容训练 JSON」只选 **已完成** 的组，转换为 `coach_log.py add-workout` 接受的结构，未知负重/次数/RIR 为 `null`。
+ChatGPT 对话原生交互区可收集可选的当日体重（原始单位 kg/斤、换算 kg）、`weight_context`（晨重/饭后训练前/训练后/未知）、训练分钟、恢复与逐组 `completed/load/reps/rir`。**提交到同一聊天后**才构成教练能处理的已报告记录。当前 UI 的未提交临时输入不能被宣称已跨回合永久保存。
 
-体重不塞进 `add-workout`，需要单独调用 `coach_log.py add-weight --date YYYY-MM-DD --kg ... --context ...`；不要把饭后体重计入晨起空腹均值。原始 UI JSON 备份还包含计划/未完成行，不能当作已完成训练直接导入 SQLite。
+未勾选=未确认完成，留空重量、次数、RIR=未知而非 0。每组的实际负重必须与目标负重分开，并标注每只哑铃/器械/杠铃/自重等口径。
+
+本仓库的 JSON/SQLite 命令行仍是**独立可选本地持久化工具**，ChatGPT 对话不会自动写入这些文件。不要将私人记录提交至公共 GitHub。

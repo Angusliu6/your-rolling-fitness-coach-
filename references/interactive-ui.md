@@ -1,50 +1,41 @@
-# Interactive workout tracker protocol (v1.2)
+# ChatGPT 对话内原生训练 UI 规范（v1.2.1）
 
-This is an **AI host behavior specification**, plus a working standalone example in [docs/training-ui.html](../docs/training-ui.html). A prompt-only Skill **cannot force** an AI client to render interactive controls, preserve UI state across chat messages, or sync to cloud storage. If interactive controls are unsupported, return a compact copyable table / ask for natural-language per-set results instead. Do not claim any ChatGPT UI automatically executes repository JavaScript.
+## 只使用当前 ChatGPT 对话形式
 
-## Required flow: preflight → active → review
+用户明确要求保留聊天回复里的 **Intelligent UI**，不是另建网站：不要生成 HTML/CSS/JS、React 页面、AppBlock、GitHub Pages、服务器或独立应用。UI 是 ChatGPT 对话内的交互展示形式，Skill 只规定响应逻辑；宿主不支持互动控件时退回同一聊天中的简明表格与自然语言输入，不强制用户跳转其他网址。
 
-### Preflight (before exercise list)
+## 训练前：可选当天体重与状态
 
-Ask for **today's body weight (optional, editable)** with units kg / 斤 (convert 1斤=0.5kg); collect weight context: `morning_fasted`, `before_workout`, `after_meal_before_workout`, `after_workout`, `unknown`. Also date, available minutes, readiness/recovery, pain and priority muscles. Pre-populate only **confirmed current-session** values; never substitute an old weigh-in as today's measurement. Non-fasted/after-meal entries should not be compared directly to fasted morning trend or interpreted as rapid lean mass gain.
+在训练计划开始时放置紧凑的“训练前”区域，用户可以自行填写：当日体重（kg 或斤；1市斤=0.5kg）、称重条件（晨起空腹、饭后训练前、训练后、未知）、当日训练分钟数、疲劳/恢复、疼痛与目标肌群。缺失体重不妨碍开始，已由用户在消息中提供的信息直接采用，不要求重复填写。不能用旧体重冒充今天测量，也不能把饭后数值与晨重直接比较作为增肌结论。
 
-### Active workout (one row per real set)
+## 训练中：计划与第四部分逐组实时进度
 
-For **every** exercise and set, render if the host supports it:
+在**同一条聊天回复**中展示今日训练 Schedule 与逐组记录区域；如宿主支持原生输入控件，则按动作提供每一组的以下字段：
 
-| Field | Rule |
-| --- | --- |
-| `completed` | User-controlled; initially **false**; only true counts as actual |
-| `load` | Editable numeric >=0, blank means **unknown**, not 0 |
-| `unit` | Default kg, optionally lb |
-| `load_basis` | Specify `per_dumbbell`, `machine_stack`, `barbell_total`, `bodyweight`, or `other`; do not compare across bases |
-| `reps` | Editable integer >=0, blank means unknown |
-| `rir` | Editable 0–10 estimate, blank means unknown |
-| `set_kind` | Work vs warmup; warmup not counted as working volume |
-| `exercise` | Editable/replaceable; show alternative for occupied machines |
-| `notes` | Optional fatigue, pain, form; shoulder fatigue is not proof of muscle growth |
+| 字段 | 规则 |
+|---|---|
+| 完成复选框 | 用户勾选，默认 false；计划中的组不计入完成 |
+| 实际重量 | 每组独立填写，空白=未知，不能代入默认推荐重量 |
+| 负重口径 | 每只哑铃/器械配重/杠铃总重/自重或外加负重，单位明确 |
+| 实际次数 | 每组独立填写，空白=未报告 |
+| 实际 RIR | 可选 0、1、2、3、4+ 或留空；与目标 RIR 分开 |
+| 动作和组数 | 可替换器械/动作、加减组，保留已完成记录 |
+| 备注 | 疲劳、动作控制、疼痛、机器繁忙、时间不足 |
 
-Allow adding/removing sets and swapping movements without losing other exercises' data. A proposed load/rep target is **not** an actual record until the user reports and confirms it. Never pre-mark planned sets as completed. If user says "did all groups, can't remember reps", mark completed with reps missing—not invented. Do not automatically push personal workout info to a public repository.
+显示“已确认完成 / 当前计划组”。若本轮用户只填部分组，就只更新这些组，不把未勾选内容记为已完成。不得仅凭计划中的数字猜测实际数据。
 
-### Core/abs module is a first-class planning requirement
+**提交按钮**应把当前输入转成同一个 ChatGPT 会话中的一条自然语言训练记录（或宿主允许的等效提交），教练在**收到消息后**更新日志、判断恢复并给下组建议/重排计划。每次新回复中的交互控件要基于已经明确收到的记录重建，不能声称旧控件未提交的草稿被自动保留或写入长期数据库。
 
-For aesthetic V-taper + visible abs goals, schedule **2–3 direct core sets** most sessions, generally across two sessions/week. Rotate:
-- Cable crunch: 2–3 × 10–15, controlled trunk flexion and stable pelvis; if cable occupied, use reverse crunch on mat.
-- Reverse crunch: 2–3 × 10–15, controlled posterior pelvic tilt, do not swing legs.
-- Optional dead bug: 2–3 × 6–10 per side when lower back control/comfort more important than loaded flexion.
+用户器械被占、手臂代偿或第三组力竭时，优先解释**当前下一组怎么做**，并提供局部更新的交互区域，而非让用户重新完成整张训练表。
 
-Include these in the **same** time budget; reduce other lower-priority sets to fit. Do not suggest spot reduction (ab training strengthens muscles but cannot selectively remove belly fat). If user has severe pain, refer for medical evaluation before prescribing loaded training.
+## 腹肌固定纳入有限时间
 
-### Summary and persistence
+当训练目标包括腹肌/腰腹线条时，通常每周两练各安排约2–3组腹部直接训练，可轮换绳索卷腹、垫上反向卷腹、死虫式。**全部纳入原来的总训练时间**，必要时减掉较低优先级动作，而不是无限加时间或增加疲劳。腹肌训练不能局部减脂。
 
-Display progress as completed / planned sets; copyable message includes bodyweight+condition and real per-set weights/reps/RIR. Export only confirmed sets to `scripts/coach_log.py` compatible JSON; preserve blank fields as `null`. A browser-local backup JSON may include planned and incomplete rows explicitly, separate from confirmed work.
+大腿**前侧**靠近膝盖的疲劳不是坐姿腿弯举主要的后侧腘绳肌发力位置；应排查先前腿举的股四头肌疲劳及膝关节局部疼痛，参见 `references/knee-symptoms.md`。
 
-`docs/training-ui.html` is mobile responsive, offline-first and saves **only in that browser's localStorage**, with manual import/export. It has no server, network calls, OAuth, SQLite integration, or ChatGPT synchronization. The optional Python SQLite engine is a **separate local program**; saving in the webpage does not mutate that database.
+## 训练后总结与数据边界
 
-**Privacy:** This repository contains code and synthetic examples only. User-specific bodyweight, chat transcripts, photos, injuries and detailed workout histories must not be committed.
+只统计已提交确认的真实组，明确标记未知次数、重量、RIR；依据同器械可比数据制定下次渐进目标。未经用户明确要求，**不要将私人训练日志上传公共 GitHub**。
 
-## Host-generated UI fallback
-
-- When host supports stateful interactive controls: preflight weight/context/time; editable set rows with `completed, load, reps, RIR`; submission action returning a plain-text confirmed log for the coach to process.
-- When host has no interactive controls: compact Markdown table plus natural-language report instructions; keep conversation-driven logging working.
-- Clear that simply clicking a browser UI's checkbox does not automatically update ChatGPT memory; must submit or copy/share the log.
+本仓库可选的 `scripts/coach_log.py` 和 `scripts/progression_db.py` 是独立本地离线工具，不是 ChatGPT UI 的后端。宿主无法保证每个客户端都有相同原生组件，Skill 也无法保证对话自动永久持久化。
