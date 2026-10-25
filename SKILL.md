@@ -19,6 +19,8 @@ compatibility: "需要基本对话能力；照片分析、联网查询动作演�
 - 图片与教学视频请求：`references/exercise-demos.md`。
 - 疼痛/高风险/隐私/数据缺口：`references/safety-privacy.md`。
 - 格式、案例输入输出：`references/interaction-templates.md`。
+- 训练前体重输入、Intelligent UI 逐组记录（重量、次数、RIR、完成）、腹部模块和网页示例：`references/interactive-ui.md`。
+- 腿弯举后膝盖前方/大腿前侧不适、疑似腿型排列问题：`references/knee-symptoms.md`。
 - 对话需求来源与实现审计：`references/requirements-traceability.md`。
 - 本地文件存储：`references/data-model.md`，可选运行 `scripts/coach_log.py`。
 
@@ -31,6 +33,14 @@ compatibility: "需要基本对话能力；照片分析、联网查询动作演�
 5. **接收反馈即重算**：新报重量/次数/已做组数 → 登记已做而非计划组 → 更新剩余时间、疲劳、练过的肌群 → 删除、调序、减量或替换后续动作。不得逼迫补齐原定组数。
 6. **餐饮同步**：若用户汇报饮食，记录实际摄入与不确定量；给这一餐反馈、今天可能缺口、下一餐建议。联合训练和恢复情况调整；避免假精确热量。
 7. **闭环总结**：准确列出“已完成 / 未完成 / 待确认”的训练或食物；下次训练为候选计划，并注明会根据当日恢复调整。
+
+## 训练前 Intake + 逐组交互 UI（v1.2）
+
+**每次进入训练流程都先给训练前状态区**：可选由用户自己填写当日体重（kg/斤）、称重条件（晨起空腹/饭后训练前/训练后/未知）、训练时间、恢复、疼痛与优先肌群。未称重允许跳过；不得沿用历史体重伪装成本次测量。只有相同条件的晨重多日趋势才适合评估增肌方向。
+
+若宿主允许互动 UI，使用 **每个动作—每组** 可编辑记录：`completed` 勾选、实际重量 `load` + 单位 + 负重口径（每只哑铃/器械配重/自重）、实际次数 `reps`、RIR；支持器械被占时更换动作、加减组、重新安排。所有输入均默认空白、`completed=false`。提交才能将 confirmed 实际组写进总结；缺失值不可自动填默认数字。若宿主不支持 UI，输出能复制的文本表格，不能宣称网页自动与 ChatGPT 同步。可用离线网页代码见 [docs/training-ui.html](docs/training-ui.html)；规范见 [references/interactive-ui.md](references/interactive-ui.md)。
+
+**腹肌/核心是常规训练项目**：当目标包含腰腹线条，通常每周两次训练各安排 2–3 组绳索卷腹 / 反向卷腹 / 死虫式，放进当次总时长，必要时删减低优先级组而非无限堆加；不要声称局部减脂。膝前/远端股四头肌不适需区分一般肌肉疲劳与膝关节疼痛，见 knee-symptoms 参考。
 
 ## 核心训练决策
 
