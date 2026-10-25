@@ -28,6 +28,7 @@
     date: document.getElementById("session-date"),
     duration: document.getElementById("duration"),
     weight: document.getElementById("bodyweight"),
+    weightUnit: document.getElementById("weight-unit"),
     context: document.getElementById("weight-context"),
     readiness: document.getElementById("readiness"),
     template: document.getElementById("template"),
@@ -44,7 +45,7 @@
       target:item[2], load_basis:item[3], muscles:[item[4]], equipment:item[0], unit:"kg"};
   }
   function makeState() {
-    return {version:2,date:dateToday(),duration:"60",bodyweight:"",weight_context:"unknown",
+    return {version:2,date:dateToday(),duration:"60",bodyweight:"",weight_unit:"kg",weight_context:"unknown",
       readiness:"normal",selected_template:"full",active_template:null,stage:"setup",
       exercises:[],notes:""};
   }
@@ -95,6 +96,7 @@
     state.date=selectors.date.value || dateToday();
     state.duration=selectors.duration.value || "60";
     state.bodyweight=selectors.weight.value;
+    state.weight_unit=selectors.weightUnit.value;
     state.weight_context=selectors.context.value;
     state.readiness=selectors.readiness.value;
     state.selected_template=selectors.template.value;
@@ -104,6 +106,7 @@
     selectors.date.value=state.date;
     selectors.duration.value=state.duration;
     selectors.weight.value=state.bodyweight;
+    selectors.weightUnit.value=state.weight_unit || "kg";
     selectors.context.value=state.weight_context;
     selectors.readiness.value=state.readiness;
     selectors.template.value=state.selected_template;
@@ -165,12 +168,17 @@
     }).filter(function(x){return x.rows.length;});
     return exercises;
   }
+  function normalizedWeightKg(){
+    var v=numberOrNull(state.bodyweight);
+    return v===null || v<=0 ? null : (state.weight_unit==="jin"?v/2:v);
+  }
   function makeSummary(){
     var contexts={unknown:"测量条件未知",morning_fasted:"晨起空腹",before_workout:"训练前",
       after_meal_before_workout:"饭后、训练前",after_workout:"训练后"};
     var lines=["Rolling Fitness Coach 训练反馈", "日期："+state.date,
       "计划时长："+state.duration+"分钟",
-      "体重："+(state.bodyweight?state.bodyweight+"kg（"+contexts[state.weight_context]+"）":"未记录"),
+      "体重："+(normalizedWeightKg()!==null?normalizedWeightKg().toFixed(2)+"kg（"+
+        (state.weight_unit==="jin"?"原始"+state.bodyweight+"斤；":"")+contexts[state.weight_context]+"）":"未记录"),
       "今日恢复："+state.readiness,"已完成组数："+rowsCount().complete+"/"+rowsCount().total];
     state.exercises.forEach(function(e){
       lines.push(e.name+"（"+labelBasis(e.load_basis)+"）：");
@@ -294,6 +302,14 @@
       state.exercises.splice(i,1);
     }
     persist();render();
+  });
+  selectors.weightUnit.addEventListener("change",function(){
+    var old=state.weight_unit || "kg",next=selectors.weightUnit.value;
+    var val=numberOrNull(selectors.weight.value);
+    if(val!==null && val>0 && old!==next){
+      selectors.weight.value=String(Math.round((next==="jin"?val*2:val/2)*100)/100);
+    }
+    readSetup();
   });
   ["date","duration","weight","context","readiness","template"].forEach(function(k){
     selectors[k].addEventListener("change",readSetup);
