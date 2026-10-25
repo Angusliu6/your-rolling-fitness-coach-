@@ -1,4 +1,4 @@
-name: Python and UI tests
+name: Python tests
 
 on:
   push:
@@ -12,10 +12,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Run Python tests
+      - name: Run tests
         run: python -m unittest discover -s tests -v
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Test mobile interactive tracker
-        run: node --test tests/test_training_ui.mjs

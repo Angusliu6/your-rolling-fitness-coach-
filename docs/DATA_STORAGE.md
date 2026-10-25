@@ -41,16 +41,8 @@ python -m unittest discover -s tests -v
 - 不能把私有数据库作为插件 ZIP 的预置文件共享；每个用户都应拥有自己的数据空间。
 
 
-## v1.2 独立浏览器逐组 UI
+## v1.2.1 ChatGPT 对话内原生记录
 
-手机或桌面浏览器可以打开 `docs/training-ui.html`（需同时保留同目录的 `training-ui.js`、`training-ui.css`）。在「训练前」填写体重和称重条件，然后进入逐组记录；每组重量、次数、RIR 和完成标记独立。浏览器本地 `localStorage` 会保存当前状态。使用「导出本地 JSON 备份」可迁移到另一设备后手工导入。
+训练前体重、称重条件和逐组重量/次数/RIR/完成状态由当前 ChatGPT 回复支持的**原生交互组件**提供，用户点提交后由同一个聊天接收并滚动更新。项目**不附带独立网页或网页端本地存储，也无需部署服务器**。
 
-「导出 CLI 兼容训练 JSON」仅导出确认完成的组，执行：
-
-```bash
-python scripts/coach_log.py add-workout --file athlete.json --input rolling-fitness-workout-YYYY-MM-DD.json
-# 当日有记录体重时，另外执行（只提供自己实际测得的数据）：
-python scripts/coach_log.py add-weight --file athlete.json --date YYYY-MM-DD --kg YOUR_MEASURED_KG --context after_meal_before_workout
-```
-
-**不能直接把浏览器 UI 导出文件当作 SQLite `progression_db.py` 的输入**；两个数据协议不同。网页目前没有后端连接、云同步或对 ChatGPT 的自动写回。请勿把导出的私人备份提交到公开仓库。
+此前的可选 JSON/SQLite 脚本仍是**独立本地命令行工具**；UI 无法自动写入用户手机本地数据库，也不能默认跨会话长期保存。不要将真实私人训练或体重记录提交至公共 GitHub。

@@ -1,14 +1,12 @@
 # Changelog
 
-## v1.2.0 — Interactive tracker, pre-workout bodyweight, core module (2026-10-25)
+## v1.2.1 — ChatGPT-native tracker correction (2026-10-25)
 
-- Add a real mobile-responsive, dependency-free browser UI: `docs/training-ui.html`, `training-ui.css`, `training-ui.js`.
-- Preflight bodyweight/context/time/readiness; editable **per-set** load, reps, RIR, completion, exercise replacements and variable set counts.
-- Include core/abs training by default, within the same time budget; provide knee-front fatigue triage guidelines.
-- Local browser save, JSON import/export and completed-sets-only export compatible with existing JSON logging CLI.
-- State explicitly that standalone UI and Skill do not automatically sync to ChatGPT, hosted database, or SQLite.
-
-
+- Use only the established in-chat Intelligent UI: optional pre-workout bodyweight and measurement conditions, plus per-set completion/load/reps/RIR controls.
+- Continue live coaching inside the same conversation, including exercise replacement and core/abs within the time budget.
+- Retain knee-front fatigue safety guidance and optional independent local logging scripts.
+- Remove the unintended standalone HTML/CSS/JS tracker, browser state/export instructions, and Node UI tests.
+- No external website, deployment, new backend, or implied automatic ChatGPT/SQLite synchronization.
 
 ## 1.0.0 — 2026-10-18
 
