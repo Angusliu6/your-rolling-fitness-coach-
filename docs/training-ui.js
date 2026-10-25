@@ -145,6 +145,7 @@
   function render(){
     selectors.list.innerHTML=state.exercises.map(function(e,i){
       var bases=["machine_stack","per_dumbbell","barbell_total","bodyweight","other"];
+      var muscles=["胸","肩","背","腿","腿后侧","腹部","手臂","臀","小腿","其他"];
       return '<article class="exercise"><div class="exercise-title">'+
         '<div class="exercise-heading"><span class="exercise-index">'+(i+1)+'</span>'+
         '<div><h3>'+safeText(e.name)+'</h3><span class="muted">目标 '+safeText(e.target||"自主设定")+
@@ -153,7 +154,11 @@
         '<div class="exercise-settings"><label>替换 / 修改动作名<input data-e="'+i+'" data-exercise="name" maxlength="100" value="'+safeText(e.name)+'"></label>'+
         '<label>负重口径<select data-e="'+i+'" data-exercise="load_basis">'+
         bases.map(function(b){return '<option value="'+b+'"'+(e.load_basis===b?' selected':'')+'>'+labelBasis(b)+'</option>';}).join('')+
-        '</select></label></div>'+
+        '</select></label>'+ 
+        '<label>目标肌群<select data-e="'+i+'" data-exercise="muscle">'+
+        muscles.map(function(m){return '<option value="'+m+'"'+(e.muscles&&e.muscles[0]===m?' selected':'')+'>'+m+'</option>';}).join('')+
+        '</select></label>'+ 
+        '<label>具体器械标识（可选）<input data-e="'+i+'" data-exercise="equipment" maxlength="80" value="'+safeText(e.equipment||"")+'"></label></div>'+
         e.rows.map(function(r,j){return setBlock(r,i,j);}).join('')+
         '<div class="controls"><button data-action="add-set" data-e="'+i+'" type="button">＋ 加一组</button>'+
         '<button data-action="remove-set" data-e="'+i+'" type="button">－ 删除末组</button></div>'+
@@ -232,6 +237,7 @@
       state.exercises=DEFAULTS[state.selected_template].map(makeExercise);
       state.active_template=state.selected_template;
     }
+    if(state.readiness==="pain" && !window.confirm("你报告了疼痛。请停止诱发疼痛的动作并考虑专业评估。是否仍要打开记录界面（不是开始负重训练建议）？"))return;
     state.stage="workout";persist();showStage();selectors.tracker.scrollIntoView({behavior:"smooth"});
   });
   byId("back").addEventListener("click",function(){
@@ -256,7 +262,11 @@
     if(!Number.isInteger(ei)||!state.exercises[ei])return;
     var e=state.exercises[ei];
     if(el.dataset.exercise==="name"){
+      if(e.equipment===e.name)e.equipment=el.value;
       e.name=el.value; persist();return;
+    }
+    if(el.dataset.exercise==="equipment"){
+      e.equipment=el.value;persist();return;
     }
     if(el.dataset.field){
       var si=Number(el.dataset.s);
@@ -274,6 +284,8 @@
     if(!Number.isInteger(ei)||!state.exercises[ei])return;
     var e=state.exercises[ei];
     if(el.dataset.exercise==="load_basis")e.load_basis=el.value;
+    if(el.dataset.exercise==="muscle")e.muscles=[el.value];
+    if(el.dataset.exercise==="equipment")e.equipment=el.value.trim();
     if(el.dataset.field==="completed") {
       var r=e.rows[Number(el.dataset.s)];if(r)r.completed=el.checked;
     }
