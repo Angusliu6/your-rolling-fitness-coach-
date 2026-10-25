@@ -39,3 +39,18 @@ python -m unittest discover -s tests -v
 - 需要 `reps`、`rir`、`form` 和休息等信息才能给出有依据的下一次逐组目标；缺数据会返回 `verify`/`baseline` 而不是凭空创造历史成绩。
 - 需要训练中交互式写入、跨设备备份、OAuth 账户和家人数据隔离时，再开发服务端 API，托管 PostgreSQL 等并确保单用户数据隔离、备份、可导出和可删除。
 - 不能把私有数据库作为插件 ZIP 的预置文件共享；每个用户都应拥有自己的数据空间。
+
+
+## v1.2 独立浏览器逐组 UI
+
+手机或桌面浏览器可以打开 `docs/training-ui.html`（需同时保留同目录的 `training-ui.js`、`training-ui.css`）。在「训练前」填写体重和称重条件，然后进入逐组记录；每组重量、次数、RIR 和完成标记独立。浏览器本地 `localStorage` 会保存当前状态。使用「导出本地 JSON 备份」可迁移到另一设备后手工导入。
+
+「导出 CLI 兼容训练 JSON」仅导出确认完成的组，执行：
+
+```bash
+python scripts/coach_log.py add-workout --file athlete.json --input rolling-fitness-workout-YYYY-MM-DD.json
+# 当日有记录体重时，另外执行（只提供自己实际测得的数据）：
+python scripts/coach_log.py add-weight --file athlete.json --date YYYY-MM-DD --kg YOUR_MEASURED_KG --context after_meal_before_workout
+```
+
+**不能直接把浏览器 UI 导出文件当作 SQLite `progression_db.py` 的输入**；两个数据协议不同。网页目前没有后端连接、云同步或对 ChatGPT 的自动写回。请勿把导出的私人备份提交到公开仓库。
