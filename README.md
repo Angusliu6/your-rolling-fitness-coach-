@@ -7,6 +7,18 @@
 
 [🚀 立即体验](#-立即体验无需安装不用懂-skill) · [English](README_EN.md) · [安装与手机使用](docs/INSTALL.md) · [Skill 源码](SKILL.md) · [Evaluation scenarios](evals/evals.json)
 
+## 🆕 v1.2 · 手机逐组记录 UI（真实可运行的开源网页）
+
+**先填训练前体重，再练，再记每一组。** 新增 [独立训练记录器源码](docs/training-ui.html)（[JS](docs/training-ui.js) · [CSS](docs/training-ui.css)），不是只放一张演示截图：
+
+- **训练前**：用户自行填写当日体重、称重条件、训练时长与恢复情况，支持跳过体重，不把饭后测量误作晨重。
+- **训练中**：每一个正式组都有自己的「完成 ✅ / 重量 kg / 次数 / RIR」控件；支持每组不同重量、器械替换、加减组。
+- **腹部固定训练**：默认计划含反向卷腹 2 组，亦可添加腹部训练；正式排进 60 分钟预算，不再训练后临时无限加量。
+- **训练后**：复制结构化训练总结返回 AI 教练；可导出/导入浏览器 JSON 备份；另可导出仅包含已完成组的本地 CLI 兼容日志。
+- **不依赖后端**：网页只写当前浏览器的 localStorage，绝不上传训练数据到公共 GitHub；**没有自动连接 ChatGPT 或 SQLite 数据库**。
+
+**运行方法**：`git clone https://github.com/Angusliu6/your-rolling-fitness-coach-.git`，在浏览器打开 `docs/training-ui.html`（保留同目录 JS/CSS）。这是一份可以打开的离线/静态网页，**不是** ChatGPT 原生 UI 的自动安装包，也不代表 GitHub Pages 已经部署；若未来开启 Pages 可以作为静态站点发布。完整说明：[训练前/UI 规范](references/interactive-ui.md) · [本地数据](docs/DATA_STORAGE.md)。
+
 ## 🚀 立即体验（无需安装、不用懂 Skill）
 
 ### **[▶ 点击这里，在 ChatGPT 开始私人健身教练对话](https://chatgpt.com/?q=%E8%AF%B7%E4%BD%9C%E4%B8%BA%20Rolling%20Fitness%20Coach%20%E5%8A%A8%E6%80%81%E7%A7%81%E4%BA%BA%E5%81%A5%E8%BA%AB%E4%B8%8E%E8%90%A5%E5%85%BB%E6%95%99%E7%BB%83%E3%80%82%E5%85%88%E8%AF%BB%E5%8F%96%E5%85%AC%E5%BC%80%20Skill%20%E6%8C%87%E4%BB%A4%EF%BC%9Ahttps%3A%2F%2Fraw.githubusercontent.com%2FAngusliu6%2Fyour-rolling-fitness-coach-%2Fmain%2FSKILL.md%20%EF%BC%8C%E5%B9%B6%E5%9C%A8%E9%9C%80%E8%A6%81%E6%97%B6%E5%8F%82%E7%85%A7%E8%AF%A5%E4%BB%93%E5%BA%93%20references%2F%20%E4%B8%8B%E7%9A%84%E7%9B%B8%E5%BA%94%E8%AF%B4%E6%98%8E%E3%80%82%E7%94%A8%E4%B8%AD%E6%96%87%E5%B8%AE%E5%8A%A9%E6%88%91%E6%A0%B9%E6%8D%AE%E4%BB%8A%E5%A4%A9%E7%9A%84%E6%97%B6%E9%97%B4%E3%80%81%E8%AE%AD%E7%BB%83%E8%AE%B0%E5%BD%95%E3%80%81%E6%81%A2%E5%A4%8D%E3%80%81%E5%99%A8%E6%9D%90%E5%92%8C%E9%A5%AE%E9%A3%9F%E6%BB%9A%E5%8A%A8%E5%88%B6%E5%AE%9A%E8%AE%A1%E5%88%92%EF%BC%9B%E4%B8%8D%E8%A6%81%E6%8A%8A%E6%9C%AA%E5%AE%8C%E6%88%90%E8%AE%AD%E7%BB%83%E7%AE%97%E4%BD%9C%E5%B7%B2%E5%AE%8C%E6%88%90%EF%BC%8C%E4%B9%9F%E4%B8%8D%E8%A6%81%E5%A3%B0%E7%A7%B0%E5%B7%B2%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E6%88%96%E6%B0%B8%E4%B9%85%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE%E3%80%82%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96%20GitHub%20%E6%96%87%E4%BB%B6%EF%BC%8C%E8%AF%B7%E5%91%8A%E8%AF%89%E6%88%91%E5%B9%B6%E8%AF%B7%E6%88%91%E7%B2%98%E8%B4%B4%20SKILL.md%20%E5%86%85%E5%AE%B9%E3%80%82%E7%8E%B0%E5%9C%A8%E5%85%88%E9%97%AE%E6%88%91%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%9A%E6%88%91%E4%BB%8A%E5%A4%A9%E8%A6%81%E8%AE%AD%E7%BB%83%E3%80%81%E6%B1%87%E6%8A%A5%E9%A5%AE%E9%A3%9F%EF%BC%8C%E8%BF%98%E6%98%AF%E5%BB%BA%E7%AB%8B%E6%A1%A3%E6%A1%88%EF%BC%9F)**
