@@ -8,7 +8,7 @@ const source=readFileSync(new URL("../docs/training-ui.js",import.meta.url),"utf
 
 function harness(){
   const ids=[
-    "session-date","duration","bodyweight","weight-context","readiness","template",
+    "session-date","duration","bodyweight","weight-unit","weight-context","readiness","template",
     "tracker","exercise-list","count","progress-bar","session-notes","feedback",
     "start","back","add","core","new-name","new-sets","copy","download","export-cli",
     "import","reset","before-title"
@@ -126,4 +126,15 @@ test("copy summary respects bodyweight context, unknowns and unconfirmed sets",a
   assert.match(app.lastCopy(),/67kg（饭后、训练前）/);
   assert.match(app.lastCopy(),/30kg.*12次/);
   assert.match(app.lastCopy(),/未确认/);
+});
+
+
+test("Chinese jin measurement is normalized for coach summary without losing raw unit",async()=>{
+  const app=harness();
+  app.dom.get("weight-unit").value="jin";
+  app.start("130","after_meal_before_workout");
+  assert.equal(app.state().weight_unit,"jin");
+  app.dom.get("copy").fire("click");
+  await Promise.resolve();
+  assert.match(app.lastCopy(),/65.00kg（原始130斤；饭后、训练前）/);
 });
