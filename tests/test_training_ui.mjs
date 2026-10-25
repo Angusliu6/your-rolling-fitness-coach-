@@ -123,7 +123,7 @@ test("copy summary respects bodyweight context, unknowns and unconfirmed sets",a
   app.set(0,0,"load","30");app.set(0,0,"reps","12");app.set(0,0,"completed",true);
   app.dom.get("copy").fire("click");
   await Promise.resolve();
-  assert.match(app.lastCopy(),/67kg（饭后、训练前）/);
+  assert.match(app.lastCopy(),/67\.00kg（饭后、训练前）/);
   assert.match(app.lastCopy(),/30kg.*12次/);
   assert.match(app.lastCopy(),/未确认/);
 });
